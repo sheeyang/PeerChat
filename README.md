@@ -2,6 +2,11 @@
 
 Peer-to-peer (P2P) chat written in SvelteKit powered by PeerJS, WebRTC and Zod, designed with Tailwind and DaisyUI
 
+## 📺 &thinsp; Demo
+https://peerchatjs.netlify.app/
+
+https://user-images.githubusercontent.com/81084281/214122897-46e98d99-42dd-4026-b569-369bfd9c94b3.mp4
+
 ## 🛠 &thinsp; Installation
 
 Clone and install dependencies:
@@ -45,7 +50,7 @@ Mobile Contact List        |  Mobile Chat
 :-------------------------:|:-------------------------:
 <img src="https://user-images.githubusercontent.com/81084281/214114120-9be90894-a094-4475-bb38-94196f1c6fb9.png" width="70%"> | <img src="https://user-images.githubusercontent.com/81084281/214114162-7c95439d-4475-400c-ab24-fdacd90c9f9d.png" width="70%">
 
-## 📽 &thinsp; Video
+## 📽 &thinsp; Videos
 
 https://user-images.githubusercontent.com/81084281/214122897-46e98d99-42dd-4026-b569-369bfd9c94b3.mp4
 
