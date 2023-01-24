@@ -1,14 +1,42 @@
 import type { DataConnection } from 'peerjs';
 import { z } from 'zod';
 
-export const MessageSchema = z.object({
+export const TextMessageSchema = z.object({
 	type: z.literal('message'),
+	messageType: z.literal('text'),
 	id: z.string(),
-	data: z.string()
+	text: z.string()
 });
 
-export type Message = z.infer<typeof MessageSchema>;
-export type MessageList = Message[];
+export type TextMessage = z.infer<typeof TextMessageSchema>;
+
+export const FileDataSchema = z.object({
+	type: z.literal('filedata'),
+	id: z.string(),
+	file: z.object({
+		name: z.string(),
+		type: z.string(),
+		size: z.number(),
+		arrayBuffer: z.instanceof(ArrayBuffer)
+	})
+});
+export type FileData = z.infer<typeof FileDataSchema>;
+
+export const FileMessageSchema = z.object({
+	type: z.literal('message'),
+	messageType: z.literal('file'),
+	id: z.string(),
+	file: z.object({
+		name: z.string(),
+		type: z.string(),
+		size: z.number(),
+		url: z.string()
+	})
+});
+
+export type FileMessage = z.infer<typeof FileMessageSchema>;
+
+export type MessageList = (TextMessage | FileMessage)[];
 
 export const ProfileSchema = z.object({
 	type: z.literal('profile'),

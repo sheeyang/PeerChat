@@ -1,16 +1,8 @@
 import type { DataConnection } from 'peerjs';
-import { ProfileSchema, MessageSchema } from './schema';
-import type { z } from 'zod';
+import type { Profile } from './schema';
 import { profile } from './stores';
-import { contacts } from '$helpers/stores';
-
-const parseData = <T extends z.ZodRawShape>(schema: z.ZodObject<T>, data: unknown) => {
-	try {
-		return schema.parse(data);
-	} catch {
-		/* empty */
-	}
-};
+import handleMessageData from './dataHandlers/handleMessageData';
+import handleData from './dataHandlers/handleProfileData';
 
 const handleConnection = (conn: DataConnection) => {
 	console.log('conn', conn);
@@ -29,29 +21,13 @@ const handleConnection = (conn: DataConnection) => {
 	conn.on('data', (data) => {
 		console.log('gotdata', data);
 
-		const msg = parseData(MessageSchema, data);
-		if (msg) {
-			console.log('is msg');
-
-			contacts.update((contacts) => {
-				contacts[msg.id].messages.push(msg);
-				return contacts;
-			});
-			return;
-		}
-
-		const profile = parseData(ProfileSchema, data);
-		if (profile) {
-			contacts.update((contacts) => {
-				return { ...contacts, [conn.peer]: { conn, profile, messages: [] } };
-			});
-			return;
-		}
+		handleData(data, conn);
+		handleMessageData(data, conn.peer);
 	});
 
 	conn.on('open', () => {
 		profile.subscribe((profile) => {
-			conn.send(profile);
+			conn.send(profile satisfies Profile);
 		});
 	});
 

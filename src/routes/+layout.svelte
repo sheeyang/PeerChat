@@ -45,17 +45,22 @@
 	};
 </script>
 
+<link
+	rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"
+/>
+
 <main data-theme="dark" class="absolute inset-0 flex flex-col">
 	<AddContactModal />
 
 	<ProfileModal />
 
 	<!-- Header -->
-	<div class="navbar">
+	<div class="navbar min-h-fit">
 		<!-- Left side -->
 		<div class="flex-1 gap-2">
 			<!-- Contacts drawer -->
-			<label for="contacts-drawer" class="flex-none lg:hidden btn btn-square btn-ghost">
+			<label for="contacts-drawer" class="flex-none lg:hidden btn btn-square btn-ghost btn-sm">
 				<!-- prettier-ignore -->
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current" ><path 	stroke-linecap="round" 	stroke-linejoin="round" 	stroke-width="2" 	d="M4 6h16M4 12h16M4 18h16" /></svg>
 			</label>
@@ -82,7 +87,7 @@
 
 	<div class="drawer drawer-mobile">
 		<input id="contacts-drawer" type="checkbox" class="drawer-toggle" />
-		<div class="drawer-content flex-auto bg-base-300 h-full p-1">
+		<div class="drawer-content flex-auto bg-base-300 h-full">
 			<!-- Chat -->
 			<slot />
 		</div>
