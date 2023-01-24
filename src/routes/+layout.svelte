@@ -18,7 +18,11 @@
 			return '';
 		};
 
-	// TODO: this doesnt work on mobile
+	/**
+	 * Runs when the tab or browser is closed
+	 * this might not work on mobile
+	 * See: https://developer.mozilla.org/en-US/docs/Web/API/Window/pagehide_event#usage_notes
+	 */
 	window.onpagehide = () => {
 		try {
 			peer.destroy();
