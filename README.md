@@ -55,3 +55,8 @@ Mobile Contact List        |  Mobile Chat
 https://user-images.githubusercontent.com/81084281/214122897-46e98d99-42dd-4026-b569-369bfd9c94b3.mp4
 
 https://user-images.githubusercontent.com/81084281/214117658-d2038b4e-5084-476c-b818-55b5fd68a6fd.mp4
+
+## 🗒 &thinsp; Todo
+- Add group chats
+- Add video chat
+- Remove peer from contacts when they are disconnected
