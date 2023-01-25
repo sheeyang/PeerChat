@@ -2,7 +2,6 @@
 	import '../app.postcss';
 	import { profile } from '$helpers/stores';
 	import { ProfileSchema } from '$helpers/schema';
-	import ProfileIcon from './ProfileIcon.svelte';
 
 	let open = false;
 	let bindProfile = $profile;
