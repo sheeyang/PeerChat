@@ -2,6 +2,7 @@
 	import '../app.postcss';
 	import { profile } from '$helpers/stores';
 	import { ProfileSchema } from '$helpers/schema';
+	import ProfileIcon from './ProfileIcon.svelte';
 
 	let open = false;
 	let bindProfile = $profile;
@@ -27,18 +28,14 @@
 		<form on:submit|preventDefault={handleSubmit}>
 			<h3 class="text-lg font-bold">Your Profile</h3>
 
-			{#if bindProfile.picture}
-				<img class="icon" src={bindProfile.picture} alt="" />
-			{:else}
-				<span class="icon">
-					<span class="pb-2">{bindProfile.name.charAt(0).toUpperCase()}</span>
-				</span>
-			{/if}
+			<div class="my-4">
+				<ProfileIcon large profile={bindProfile} />
+			</div>
 
-			<p class="mt-4 mb-2">Username:</p>
+			<p class="my-4">Username:</p>
 			<input bind:value={bindProfile.name} type="text" class="input input-bordered w-full" />
 
-			<p class="mt-4 mb-2">Picture URL:</p>
+			<p class="my-4">Picture URL:</p>
 			<input bind:value={bindProfile.picture} type="text" class="input input-bordered w-full" />
 
 			<div class="modal-action">
@@ -47,12 +44,3 @@
 		</form>
 	</label>
 </label>
-
-<style lang="postcss">
-	.icon {
-		@apply bg-neutral grid content-center text-center object-cover cursor-pointer;
-		@apply h-32 w-32 my-6;
-		clip-path: circle();
-		font-size: 5em;
-	}
-</style>
