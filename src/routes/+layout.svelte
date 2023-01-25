@@ -64,7 +64,7 @@
 		<!-- Left side -->
 		<div class="flex-1 gap-2">
 			<!-- Contacts drawer -->
-			<label for="contacts-drawer" class="flex-none lg:hidden btn btn-square btn-ghost btn-sm">
+			<label for="contacts-drawer" class="flex-none lg:hidden btn btn-square btn-ghost">
 				<!-- prettier-ignore -->
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current" ><path 	stroke-linecap="round" 	stroke-linejoin="round" 	stroke-width="2" 	d="M4 6h16M4 12h16M4 18h16" /></svg>
 			</label>
@@ -73,9 +73,7 @@
 			<button on:click={handleCopy} class="h-full text-info tooltip tooltip-bottom" data-tip="Copy"
 				>{peer.id}
 			</button>
-			<span
-				class:opacity-0={!showCopiedText}
-				class="transition-all ease-in-out duration-100 select-none px-2"
+			<span class:hidden={!showCopiedText} class="transition-all ease-in-out duration-100 px-2"
 				>Copied
 			</span>
 		</div>
