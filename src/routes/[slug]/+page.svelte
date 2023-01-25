@@ -4,6 +4,7 @@
 	import peer from '$helpers/peer';
 	import { contacts } from '$helpers/stores';
 	import { afterUpdate } from 'svelte';
+	import sendFiles from './sendFiles';
 
 	let chatElement: HTMLElement;
 
@@ -23,9 +24,38 @@
 	};
 
 	const isMine = (id: string) => id === peer.id;
+
+	const handleDrop = (e: DragEvent) => {
+		if (e.dataTransfer?.files) {
+			sendFiles(e.dataTransfer.files, $contacts[$page.params.slug]);
+		}
+
+		// if (e.dataTransfer?.items) {
+		// 	// Use DataTransferItemList interface to access the file(s)
+		// 	[...e.dataTransfer.items].forEach((item, i) => {
+		// 		console.log(item);
+
+		// 		item.getAsString((e) => console.log(e));
+
+		// 		// If dropped items aren't files, reject them
+		// 		if (item.kind === 'file') {
+		// 			sendFiles(e.dataTransfer.files, $contacts[$page.params.slug]);
+		// 		}
+		// 	});
+		// }
+	};
+
+	const handleDragOver = (e: DragEvent) => {
+		console.log('File(s) in drop zone');
+	};
 </script>
 
-<div bind:this={chatElement} class="h-full overflow-auto p-2">
+<div
+	bind:this={chatElement}
+	on:drop|preventDefault={handleDrop}
+	on:dragover|preventDefault={handleDragOver}
+	class="h-full overflow-auto p-2"
+>
 	{#each $contacts[$page.params.slug]?.messages ?? [] as msg}
 		{#if msg.messageType === 'text'}
 			<div class="chat {isMine(msg.id) ? 'chat-end' : 'chat-start'}">
