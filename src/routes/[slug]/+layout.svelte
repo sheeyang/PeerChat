@@ -4,7 +4,7 @@
 	import peer from '$helpers/peer';
 	import type { TextMessage } from '$helpers/schema';
 	import { contacts } from '$helpers/stores';
-	import AddFilesModal from './AddFilesModal.svelte';
+	import SendFilesModal from './SendFilesModal.svelte';
 
 	let text = '';
 
@@ -25,7 +25,8 @@
 </script>
 
 <div class="flex flex-col h-full">
-	<AddFilesModal />
+	<!-- TODO: Add drag and drop files -->
+	<SendFilesModal />
 	<slot />
 	<form on:submit|preventDefault={handleSubmit} class="flex border-t border-t-base-100">
 		<!-- svelte-ignore a11y-autofocus -->
@@ -36,7 +37,7 @@
 			class="input input-ghost input-sm flex-auto m-1.5"
 			autofocus
 		/>
-		<label for="add-files-modal" class="btn btn-sm btn-ghost btn-square m-1.5">
+		<label for="send-files-modal" class="btn btn-sm btn-ghost btn-square m-1.5">
 			<span class="material-symbols-rounded"> attach_file </span>
 		</label>
 		<button type="submit" class="btn btn-sm btn-ghost btn-square m-1.5">

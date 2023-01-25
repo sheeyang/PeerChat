@@ -63,6 +63,7 @@
 	<div class="navbar min-h-fit">
 		<!-- Left side -->
 		<div class="flex-1 gap-2">
+			<!-- TODO: highlight the selected contact -->
 			<!-- Contacts drawer -->
 			<label for="contacts-drawer" class="flex-none lg:hidden btn btn-square btn-ghost">
 				<!-- prettier-ignore -->

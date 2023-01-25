@@ -30,12 +30,12 @@
 </script>
 
 <!-- svelte-ignore missing-declaration -->
-<input type="checkbox" id="add-files-modal" class="modal-toggle" bind:checked={open} />
+<input type="checkbox" id="send-files-modal" class="modal-toggle" bind:checked={open} />
 
-<label for="add-files-modal" class="modal cursor-pointer">
+<label for="send-files-modal" class="modal cursor-pointer">
 	<label class="modal-box relative">
 		<form on:submit|preventDefault={handleSubmit}>
-			<h3 class="text-lg font-bold">Add Files</h3>
+			<h3 class="text-lg font-bold">Send Files</h3>
 
 			<div class="form-control w-full">
 				<!-- svelte-ignore a11y-label-has-associated-control -->
@@ -46,7 +46,7 @@
 			</div>
 
 			<div class="modal-action">
-				<button type="submit" class="btn btn-sm btn-success">ADD</button>
+				<button type="submit" class="btn btn-sm btn-success">Send</button>
 			</div>
 		</form>
 	</label>
