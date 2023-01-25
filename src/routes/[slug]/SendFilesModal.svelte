@@ -9,8 +9,6 @@
 	let bindFiles: FileList;
 
 	const handleSubmit = async () => {
-		console.log(bindFiles, 'instanceof', bindFiles[0] instanceof Blob);
-
 		const file = bindFiles[0];
 
 		const fileData: FileData = {
@@ -29,7 +27,6 @@
 	};
 </script>
 
-<!-- svelte-ignore missing-declaration -->
 <input type="checkbox" id="send-files-modal" class="modal-toggle" bind:checked={open} />
 
 <label for="send-files-modal" class="modal cursor-pointer">
@@ -38,10 +35,9 @@
 			<h3 class="text-lg font-bold">Send Files</h3>
 
 			<div class="form-control w-full">
-				<!-- svelte-ignore a11y-label-has-associated-control -->
-				<label class="label">
+				<div class="label">
 					<span class="label-text">Pick a file</span>
-				</label>
+				</div>
 				<input bind:files={bindFiles} type="file" class="file-input file-input-bordered w-full" />
 			</div>
 

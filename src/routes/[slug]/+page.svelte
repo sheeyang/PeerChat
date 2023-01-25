@@ -8,42 +8,19 @@
 	let chatElement: HTMLElement;
 
 	if (!$contacts[$page.params.slug]) goto('/');
-	$: console.log($contacts[$page.params.slug]);
 
 	afterUpdate(() => {
 		chatElement.scroll({ top: chatElement.scrollHeight, behavior: 'smooth' });
 	});
 
 	/**
-	 * Format bytes as human-readable text.
-	 * @link https://stackoverflow.com/a/14919494
-	 * @param bytes Number of bytes.
-	 * @param si True to use metric (SI) units, aka powers of 1000. False to use
-	 *           binary (IEC), aka powers of 1024.
-	 * @param dp Number of decimal places to display.
-	 *
-	 * @return Formatted string.
+	 * @description Format bytes as human-readable text.
+	 * @link https://stackoverflow.com/a/20732091
 	 */
-	function humanFileSize(bytes: number, si = false, dp = 1) {
-		const thresh = si ? 1000 : 1024;
-
-		if (Math.abs(bytes) < thresh) {
-			return bytes + ' B';
-		}
-
-		const units = si
-			? ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
-			: ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
-		let u = -1;
-		const r = 10 ** dp;
-
-		do {
-			bytes /= thresh;
-			++u;
-		} while (Math.round(Math.abs(bytes) * r) / r >= thresh && u < units.length - 1);
-
-		return bytes.toFixed(dp) + ' ' + units[u];
-	}
+	const humanFileSize = (size: number) => {
+		var i = size == 0 ? 0 : Math.floor(Math.log(size) / Math.log(1024));
+		return parseInt((size / Math.pow(1024, i)).toFixed(2)) + ' ' + ['B', 'kB', 'MB', 'GB', 'TB'][i];
+	};
 
 	const isMine = (id: string) => id === peer.id;
 </script>

@@ -32,7 +32,6 @@
 	};
 
 	peer.on('connection', (conn) => {
-		console.log('conn', conn);
 		handleConnection(conn);
 	});
 

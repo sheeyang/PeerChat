@@ -5,11 +5,10 @@ import handleMessageData from './dataHandlers/handleMessageData';
 import handleData from './dataHandlers/handleProfileData';
 
 const handleConnection = (conn: DataConnection) => {
-	console.log('conn', conn);
+	console.log('got conn', conn);
 
 	// check if connection is still open if other methods fail
 	conn.peerConnection.onconnectionstatechange = () => {
-		// console.log(conn.peerConnection?.connectionState);
 		if (conn.peerConnection?.connectionState === 'disconnected') conn.close();
 	};
 
@@ -31,11 +30,12 @@ const handleConnection = (conn: DataConnection) => {
 	});
 
 	conn.on('close', () => {
+		console.log(conn.peer, 'closed');
+
 		contacts.update((contacts) => {
 			delete contacts[conn.peer];
 			return contacts;
 		});
-		console.log(conn.peer, 'closed');
 	});
 };
 

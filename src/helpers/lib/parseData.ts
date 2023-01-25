@@ -4,7 +4,7 @@ const parseData = <T extends z.ZodRawShape>(schema: z.ZodObject<T>, data: unknow
 	try {
 		return schema.parse(data);
 	} catch {
-		/* empty */
+		/* throw away useless data */
 	}
 };
 
