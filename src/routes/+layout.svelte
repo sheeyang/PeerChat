@@ -1,6 +1,5 @@
 <script type="ts">
 	import '../app.postcss';
-	import handleConnection from '$helpers/handleConnection';
 	import peer from '$helpers/peer';
 	import AddContactModal from './AddContactModal.svelte';
 	import { profile, contacts } from '$helpers/stores';
@@ -9,11 +8,6 @@
 	import copyTextToClipboard from '$helpers/copyTextToClipboard';
 	import { goto } from '$app/navigation';
 	import { dev } from '$app/environment';
-	import Peer from 'peerjs';
-
-	// $peer = new Peer('sdfdsfsdf');
-	// $peer = new Peer('sdfdsfsfsdfddsdf');
-	// $peer = new Peer('sdfdsfsddsfdsfdsfdsfsdff');
 
 	let showCopiedText = false;
 

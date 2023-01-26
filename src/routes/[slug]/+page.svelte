@@ -45,7 +45,7 @@
 		// }
 	};
 
-	const handleDragOver = (e: DragEvent) => {
+	const handleDragOver = () => {
 		console.log('File(s) in drop zone');
 	};
 </script>
