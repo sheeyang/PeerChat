@@ -29,7 +29,7 @@ const peer = () => {
 			console.error(error);
 		};
 
-		peer.on('error', (error) => handleError(error as unknown as { type: PeerErrorType }));
+		peer.on('error', handleError as unknown as (error: Error) => void);
 	});
 
 	return { ...peerWritable, set };
