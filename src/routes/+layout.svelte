@@ -85,7 +85,7 @@
 	</div>
 
 	<div class="drawer drawer-mobile">
-		<input id="contacts-drawer" type="checkbox" class="drawer-toggle" />
+		<input id="contacts-drawer" type="checkbox" class="drawer-toggle lg:invisible" />
 		<div class="drawer-content flex-auto bg-base-300 h-full">
 			<!-- Chat -->
 			<slot />
