@@ -9,11 +9,11 @@
 	let text = '';
 
 	const handleSubmit = () => {
-		if (peer.id) {
+		if ($peer.id) {
 			const msg: TextMessage = {
 				type: 'message',
 				messageType: 'text',
-				id: peer.id,
+				id: $peer.id,
 				text
 			};
 			$contacts[$page.params.slug].conn.send(msg satisfies TextMessage);

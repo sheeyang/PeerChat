@@ -23,7 +23,7 @@
 		return parseInt((size / Math.pow(1024, i)).toFixed(2)) + ' ' + ['B', 'kB', 'MB', 'GB', 'TB'][i];
 	};
 
-	const isMine = (id: string) => id === peer.id;
+	const isMine = (id: string) => id === $peer.id;
 
 	const handleDrop = (e: DragEvent) => {
 		if (e.dataTransfer?.files) {

@@ -9,6 +9,11 @@
 	import copyTextToClipboard from '$helpers/copyTextToClipboard';
 	import { goto } from '$app/navigation';
 	import { dev } from '$app/environment';
+	import Peer from 'peerjs';
+
+	// $peer = new Peer('sdfdsfsdf');
+	// $peer = new Peer('sdfdsfsfsdfddsdf');
+	// $peer = new Peer('sdfdsfsddsfdsfdsfdsfsdff');
 
 	let showCopiedText = false;
 
@@ -25,22 +30,14 @@
 	 */
 	window.onpagehide = () => {
 		try {
-			peer.destroy();
+			$peer.destroy();
 		} catch (error) {
 			console.error(error);
 		}
 	};
 
-	peer.on('connection', (conn) => {
-		handleConnection(conn);
-	});
-
-	peer.on('error', (error) => {
-		console.error(error);
-	});
-
 	const handleCopy = () => {
-		copyTextToClipboard(peer.id);
+		copyTextToClipboard($peer.id);
 		showCopiedText = true;
 		setTimeout(() => {
 			showCopiedText = false;
@@ -71,7 +68,7 @@
 			<!-- Peer ID -->
 			<span>Your ID:</span>
 			<button on:click={handleCopy} class="h-full text-info tooltip tooltip-bottom" data-tip="Copy"
-				>{peer.id}
+				>{$peer.id}
 			</button>
 			<span class:hidden={!showCopiedText} class="transition-all ease-in-out duration-100 px-2"
 				>Copied

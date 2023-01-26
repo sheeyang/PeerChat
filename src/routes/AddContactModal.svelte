@@ -6,7 +6,7 @@
 	let bindId = '';
 
 	const handleSubmit = () => {
-		const conn = peer.connect(bindId);
+		const conn = $peer.connect(bindId);
 		handleConnection(conn);
 		bindId = '';
 		open = false;
