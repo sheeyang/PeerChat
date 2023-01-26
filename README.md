@@ -59,4 +59,3 @@ https://user-images.githubusercontent.com/81084281/214117658-d2038b4e-5084-476c-
 ## 🗒 &thinsp; Todo
 - Add group chats
 - Add video chat
-- Remove peer from contacts when they are disconnected

@@ -25,7 +25,6 @@
 </script>
 
 <div class="flex flex-col h-full">
-	<!-- TODO: Add drag and drop files -->
 	<SendFilesModal />
 	<slot />
 	<form on:submit|preventDefault={handleSubmit} class="flex border-t border-t-base-100">
