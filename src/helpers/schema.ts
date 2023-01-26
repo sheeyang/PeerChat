@@ -40,7 +40,7 @@ export type MessageList = (TextMessage | FileMessage)[];
 
 export const ProfileSchema = z.object({
 	type: z.literal('profile'),
-	id: z.string(),
+	// id: z.string(), //TODO: Allow user to reuse their ID
 	name: z.string(),
 	picture: z.union([z.literal(''), z.string().trim().url()])
 });
