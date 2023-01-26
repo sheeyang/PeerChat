@@ -1,8 +1,7 @@
 <script type="ts">
-	import '../app.postcss';
-	import { profile } from '$helpers/stores';
-	import { ProfileSchema } from '$helpers/schema';
 	import ProfileIcon from './ProfileIcon.svelte';
+	import { profile } from '$lib/stores';
+	import { ProfileSchema } from '$lib/schema';
 
 	let open = false;
 	let bindProfile = $profile;

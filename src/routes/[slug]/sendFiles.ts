@@ -1,7 +1,8 @@
-import handleMessageData from '$helpers/dataHandlers/handleMessageData';
-import peer from '$helpers/peer';
-import type { Contact, FileData } from '$helpers/schema';
 import { get } from 'svelte/store';
+import handleMessageData from '$lib/dataHandlers/handleMessageData';
+import { peer } from '$lib/stores';
+import type { FileData } from '$lib/schema';
+import type { Contact } from '$lib/interfaces/contact';
 
 const sendFiles = async (fileList: FileList, contact: Contact) => {
 	console.log('sending');

@@ -1,13 +1,16 @@
 <script type="ts">
 	import '../app.postcss';
-	import peer from '$helpers/peer';
-	import AddContactModal from './AddContactModal.svelte';
-	import { profile, contacts } from '$helpers/stores';
-	import ProfileModal from './ProfileModal.svelte';
-	import ProfileIcon from './ProfileIcon.svelte';
-	import copyTextToClipboard from '$helpers/copyTextToClipboard';
+
 	import { goto } from '$app/navigation';
 	import { dev } from '$app/environment';
+
+	import AddContactModal from './AddContactModal.svelte';
+	import ProfileModal from './ProfileModal.svelte';
+	import ProfileIcon from './ProfileIcon.svelte';
+
+	import { peer } from '$lib/stores';
+	import { profile, contacts } from '$lib/stores';
+	import copyTextToClipboard from './copyTextToClipboard';
 
 	let showCopiedText = false;
 

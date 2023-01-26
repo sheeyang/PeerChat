@@ -1,9 +1,10 @@
 <script type="ts">
+	import { afterUpdate } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import peer from '$helpers/peer';
-	import { contacts } from '$helpers/stores';
-	import { afterUpdate } from 'svelte';
+
+	import { peer } from '$lib/stores';
+	import { contacts } from '$lib/stores';
 	import sendFiles from './sendFiles';
 
 	let chatElement: HTMLElement;

@@ -1,5 +1,5 @@
 <script type="ts">
-	import type { Profile } from '$helpers/schema';
+	import type { Profile } from '$lib/schema';
 
 	export let large = false;
 	export let profile: Profile;

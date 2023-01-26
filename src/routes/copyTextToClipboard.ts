@@ -15,6 +15,7 @@ const fallbackCopyTextToClipboard = (text: string) => {
 
 	document.body.removeChild(textArea);
 };
+
 const copyTextToClipboard = (text: string) => {
 	if (!navigator.clipboard) {
 		fallbackCopyTextToClipboard(text);

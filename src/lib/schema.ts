@@ -1,4 +1,3 @@
-import type { DataConnection } from 'peerjs';
 import { z } from 'zod';
 
 export const TextMessageSchema = z.object({
@@ -45,6 +44,3 @@ export const ProfileSchema = z.object({
 });
 
 export type Profile = z.infer<typeof ProfileSchema>;
-
-export type Contact = { conn: DataConnection; profile: Profile; messages: MessageList };
-export type ContactMap = Record<string, Contact>;

@@ -1,11 +1,11 @@
 import { Peer, type PeerErrorType } from 'peerjs';
 import { customAlphabet } from 'nanoid';
 import { get, writable } from 'svelte/store';
-import handleConnection from './handleConnection';
+import handleConnection from '../handleConnection';
 
 // export default new Peer(customAlphabet('1234567890abcdef', 10)());
 
-const peer = () => {
+const peerWritable = () => {
 	const peerId = localStorage?.getItem('peerId') ?? customAlphabet('1234567890abcdef', 10)();
 	const peerWritable = writable(new Peer(peerId));
 
@@ -17,8 +17,6 @@ const peer = () => {
 	peerWritable.subscribe((peer) => {
 		localStorage.setItem('peerId', peer.id);
 
-		peer.on('connection', handleConnection);
-
 		const handleError = (error: { type: PeerErrorType }) => {
 			if (error.type === 'unavailable-id') {
 				console.log('ID is unavailable');
@@ -29,10 +27,11 @@ const peer = () => {
 			console.error(error);
 		};
 
+		peer.on('connection', (conn) => handleConnection(conn));
 		peer.on('error', handleError as unknown as (error: Error) => void);
 	});
 
 	return { ...peerWritable, set };
 };
 
-export default peer();
+export default peerWritable;

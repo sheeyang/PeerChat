@@ -1,10 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import handleMessageData from '$helpers/dataHandlers/handleMessageData';
-	import peer from '$helpers/peer';
-	import type { TextMessage } from '$helpers/schema';
-	import { contacts } from '$helpers/stores';
+
 	import SendFilesModal from './SendFilesModal.svelte';
+
+	import handleMessageData from '$lib/dataHandlers/handleMessageData';
+	import { peer } from '$lib/stores';
+	import type { TextMessage } from '$lib/schema';
+	import { contacts } from '$lib/stores';
 
 	let text = '';
 

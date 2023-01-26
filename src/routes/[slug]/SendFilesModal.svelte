@@ -1,6 +1,6 @@
 <script type="ts">
 	import { page } from '$app/stores';
-	import { contacts } from '$helpers/stores';
+	import { contacts } from '$lib/stores';
 	import sendFiles from './sendFiles';
 
 	let open = false;

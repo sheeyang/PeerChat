@@ -1,6 +1,6 @@
 <script type="ts">
-	import handleConnection from '$helpers/handleConnection';
-	import peer from '$helpers/peer';
+	import handleConnection from '$lib/handleConnection';
+	import { peer } from '$lib/stores';
 
 	let open = false;
 	let bindId = '';

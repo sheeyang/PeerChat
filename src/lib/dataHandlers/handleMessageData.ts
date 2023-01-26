@@ -1,14 +1,16 @@
 import {
-	TextMessageSchema,
+	type TextMessage,
 	type FileMessage,
+	TextMessageSchema,
 	FileDataSchema,
-	FileMessageSchema,
-	type TextMessage
+	FileMessageSchema
 } from '../schema';
-import { contacts } from '$helpers/stores';
-import parseData from '../lib/parseData';
+import { contacts } from '$lib/stores';
+import parseData from '../general/parseSchema';
 
 /**
+ * This function adds incoming message to the contacts messages list
+ *
  * This function is run when the client sends the message,
  * and when the PeerJS connection receives a message.
  *
