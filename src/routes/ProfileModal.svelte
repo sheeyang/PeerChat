@@ -5,6 +5,7 @@
 
 	let open = false;
 	let bindProfile = $profile;
+	let pictureInput: HTMLInputElement;
 
 	const handleSubmit = () => {
 		try {
@@ -27,15 +28,20 @@
 		<form on:submit|preventDefault={handleSubmit}>
 			<h3 class="text-lg font-bold">Your Profile</h3>
 
-			<div class="my-4">
+			<button class="my-4" on:click|preventDefault={() => pictureInput.focus()}>
 				<ProfileIcon large profile={bindProfile} />
-			</div>
+			</button>
 
 			<p class="my-4">Username:</p>
 			<input bind:value={bindProfile.name} type="text" class="input input-bordered w-full" />
 
 			<p class="my-4">Picture URL:</p>
-			<input bind:value={bindProfile.picture} type="text" class="input input-bordered w-full" />
+			<input
+				bind:value={bindProfile.picture}
+				bind:this={pictureInput}
+				type="text"
+				class="input input-bordered w-full"
+			/>
 
 			<div class="modal-action">
 				<button type="submit" class="btn btn-sm btn-success m-1">Update</button>
