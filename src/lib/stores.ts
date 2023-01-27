@@ -12,4 +12,5 @@ export const profile = localWritable<Profile>('profile', {
 
 export const contacts = writable<ContactMap>({});
 
+//TODO: allow user to set their peer ID
 export const peer = peerWritable();

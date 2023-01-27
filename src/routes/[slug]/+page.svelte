@@ -30,20 +30,6 @@
 		if (e.dataTransfer?.files) {
 			sendFiles(e.dataTransfer.files, $contacts[$page.params.slug]);
 		}
-
-		// if (e.dataTransfer?.items) {
-		// 	// Use DataTransferItemList interface to access the file(s)
-		// 	[...e.dataTransfer.items].forEach((item, i) => {
-		// 		console.log(item);
-
-		// 		item.getAsString((e) => console.log(e));
-
-		// 		// If dropped items aren't files, reject them
-		// 		if (item.kind === 'file') {
-		// 			sendFiles(e.dataTransfer.files, $contacts[$page.params.slug]);
-		// 		}
-		// 	});
-		// }
 	};
 
 	const handleDragOver = () => {
