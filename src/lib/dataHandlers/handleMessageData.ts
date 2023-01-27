@@ -28,6 +28,8 @@ const handleMessageData = (data: unknown, id: string) => {
 		return;
 	}
 
+	// TODO: let the user decide if he wants to download the file
+	// TODO: download the file in chunks so it wont lag the UI when receiving the file
 	const fileData = parseData(FileDataSchema, data);
 	if (fileData) {
 		const reader = new FileReader();
