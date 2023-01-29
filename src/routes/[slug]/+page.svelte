@@ -36,7 +36,7 @@
 </script>
 
 <div
-	class="flex flex-col h-full relative"
+	class="flex flex-col h-full relative min-h-0"
 	on:dragover|preventDefault
 	on:dragenter|preventDefault={(e) => {
 		if (e.dataTransfer?.types[0] === 'Files') showDropOverlay = true;

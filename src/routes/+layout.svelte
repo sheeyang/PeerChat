@@ -45,7 +45,7 @@
 
 <link
 	rel="stylesheet"
-	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
 />
 
 <main class="absolute inset-0 flex flex-col">
@@ -85,7 +85,7 @@
 		<div class="flex-none gap-2">
 			<ThemeChanger />
 			<label for="add-contact-modal" class="btn btn-sm btn-square btn-success">
-				<span class="material-symbols-rounded"> add </span>
+				<span class="material-symbols-rounded icon-sm"> add </span>
 			</label>
 			<label for="profile-modal">
 				<ProfileIcon profile={$profile} />

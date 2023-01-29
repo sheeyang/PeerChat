@@ -29,8 +29,8 @@
 <div class="dropdown dropdown-end">
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 	<!-- svelte-ignore a11y-label-has-associated-control -->
-	<label tabindex="0" class="btn btn-sm btn-square m-1 btn-ghost">
-		<span class="material-symbols-rounded"> brush </span>
+	<label tabindex="0" class="btn btn-sm btn-square btn-accent">
+		<span class="material-symbols-rounded icon-sm icon-fill"> brush </span>
 	</label>
 	<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 	<ul
