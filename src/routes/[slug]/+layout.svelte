@@ -35,7 +35,7 @@
 			bind:value={text}
 			type="text"
 			placeholder="Message"
-			class="input input-ghost input-sm flex-auto m-1.5"
+			class="input input-ghost input-sm flex-auto m-1.5 rounded-none"
 			autofocus
 		/>
 		<label for="send-files-modal" class="btn btn-sm btn-ghost btn-square m-1.5">

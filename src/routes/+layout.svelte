@@ -7,12 +7,13 @@
 	import AddContactModal from './AddContactModal.svelte';
 	import ProfileModal from './ProfileModal.svelte';
 	import ProfileIcon from './ProfileIcon.svelte';
+	import ThemeChanger from './ThemeChanger.svelte';
 
 	import { peer } from '$lib/stores';
 	import { profile, contacts } from '$lib/stores';
 	import copyTextToClipboard from './copyTextToClipboard';
 
-	let showCopiedText = false;
+	let showCopiedTooltip = false;
 
 	if (!dev)
 		// prevent reload in production
@@ -35,19 +36,19 @@
 
 	const handleCopy = () => {
 		copyTextToClipboard($peer.id);
-		showCopiedText = true;
+		showCopiedTooltip = true;
 		setTimeout(() => {
-			showCopiedText = false;
+			showCopiedTooltip = false;
 		}, 1500);
 	};
 </script>
 
 <link
 	rel="stylesheet"
-	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0"
 />
 
-<main data-theme="dark" class="absolute inset-0 flex flex-col">
+<main class="absolute inset-0 flex flex-col">
 	<AddContactModal />
 
 	<ProfileModal />
@@ -64,17 +65,28 @@
 			</label>
 			<!-- Peer ID -->
 			<span>Your ID:</span>
-			<button on:click={handleCopy} class="h-full text-info tooltip tooltip-bottom" data-tip="Copy"
-				>{$peer.id}
+			<button
+				tabindex="-1"
+				on:click={handleCopy}
+				class="h-full text-info tooltip tooltip-right"
+				data-tip="Copy"
+			>
+				<span
+					class="absolute h-full w-full text-info tooltip tooltip-right tooltip-open transition-opacity ease-out duration-200 z-50"
+					class:opacity-0={!showCopiedTooltip}
+					class:transition-none={showCopiedTooltip}
+					data-tip="Copied!"
+				/>
+				{$peer.id}
 			</button>
-			<span class:hidden={!showCopiedText} class="transition-all ease-in-out duration-100 px-2"
-				>Copied
-			</span>
 		</div>
 
 		<!-- Right side -->
 		<div class="flex-none gap-2">
-			<label for="add-contact-modal" class="btn btn-sm btn-square btn-success">+</label>
+			<ThemeChanger />
+			<label for="add-contact-modal" class="btn btn-sm btn-square btn-success">
+				<span class="material-symbols-rounded"> add </span>
+			</label>
 			<label for="profile-modal">
 				<ProfileIcon profile={$profile} />
 			</label>

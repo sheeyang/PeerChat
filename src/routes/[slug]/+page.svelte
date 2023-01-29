@@ -47,7 +47,7 @@
 		on:dragleave|preventDefault={() => {
 			showDropOverlay = false;
 		}}
-		class="h-full w-full absolute z-50 bg-opacity-10 bg-black grid items-center text-center text-4xl"
+		class="h-full w-full absolute z-50 bg-opacity-10 bg-black grid items-center text-center text-4xl select-none"
 		class:hidden={!showDropOverlay}
 	>
 		Drop files here
