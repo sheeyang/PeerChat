@@ -7,7 +7,7 @@ import type { z } from 'zod';
  * @param data the data to parse against the schema
  * @returns the data if it matches the schema, otherwise returns undefined
  */
-const parseData = <T extends z.ZodRawShape>(schema: z.ZodObject<T>, data: unknown) => {
+const parseSchema = <T extends z.ZodRawShape>(schema: z.ZodObject<T>, data: unknown) => {
 	try {
 		return schema.parse(data);
 	} catch {
@@ -15,4 +15,4 @@ const parseData = <T extends z.ZodRawShape>(schema: z.ZodObject<T>, data: unknow
 	}
 };
 
-export default parseData;
+export default parseSchema;

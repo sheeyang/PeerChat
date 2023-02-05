@@ -6,7 +6,7 @@ import {
 	FileMessageSchema
 } from '../schema';
 import { contacts } from '$lib/stores';
-import parseData from '../general/parseSchema';
+import parseSchema from '../general/parseSchema';
 
 /**
  * This function adds incoming message to the contacts messages list
@@ -19,7 +19,7 @@ import parseData from '../general/parseSchema';
  * @returns
  */
 const handleMessageData = (data: unknown, id: string) => {
-	const textMessage = parseData(TextMessageSchema, data);
+	const textMessage = parseSchema(TextMessageSchema, data);
 	if (textMessage) {
 		contacts.update((contacts) => {
 			contacts[id].messages.push(textMessage satisfies TextMessage);
@@ -30,13 +30,13 @@ const handleMessageData = (data: unknown, id: string) => {
 
 	// TODO: let the user decide if he wants to download the file
 	// TODO: download the file in chunks so it wont lag the UI when receiving the file
-	const fileData = parseData(FileDataSchema, data);
+	const fileData = parseSchema(FileDataSchema, data);
 	if (fileData) {
 		const reader = new FileReader();
 
 		reader.readAsDataURL(new Blob([new Uint8Array(fileData.file.arrayBuffer)]));
 		reader.addEventListener('load', () => {
-			const msg: FileMessage | undefined = parseData(FileMessageSchema, {
+			const msg: FileMessage | undefined = parseSchema(FileMessageSchema, {
 				type: 'message',
 				messageType: 'file',
 				id: fileData.id,

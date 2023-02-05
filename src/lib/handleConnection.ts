@@ -2,7 +2,7 @@ import type { DataConnection } from 'peerjs';
 import type { Profile } from './schema';
 import { contacts, profile } from './stores';
 import handleMessageData from './dataHandlers/handleMessageData';
-import handleData from './dataHandlers/handleProfileData';
+import handleProfileData from './dataHandlers/handleProfileData';
 
 const handleConnection = (conn: DataConnection) => {
 	console.log('got conn', conn);
@@ -19,7 +19,7 @@ const handleConnection = (conn: DataConnection) => {
 	conn.on('data', (data) => {
 		console.log('got data', data);
 
-		handleData(data, conn);
+		handleProfileData(data, conn);
 		handleMessageData(data, conn.peer);
 	});
 

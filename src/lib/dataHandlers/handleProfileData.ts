@@ -1,5 +1,5 @@
 import type { DataConnection } from 'peerjs';
-import parseData from '$lib/general/parseSchema';
+import parseSchema from '$lib/general/parseSchema';
 import { ProfileSchema } from '$lib/schema';
 import { contacts } from '$lib/stores';
 
@@ -10,8 +10,8 @@ import { contacts } from '$lib/stores';
  * @param conn The connection to the peer
  * @returns
  */
-const handleData = (data: unknown, conn: DataConnection) => {
-	const profile = parseData(ProfileSchema, data);
+const handleProfileData = (data: unknown, conn: DataConnection) => {
+	const profile = parseSchema(ProfileSchema, data);
 	if (profile) {
 		contacts.update((contacts) => {
 			return { ...contacts, [conn.peer]: { conn, profile, messages: [] } };
@@ -20,4 +20,4 @@ const handleData = (data: unknown, conn: DataConnection) => {
 	}
 };
 
-export default handleData;
+export default handleProfileData;
