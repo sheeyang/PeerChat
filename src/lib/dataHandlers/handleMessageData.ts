@@ -29,32 +29,27 @@ const handleMessageData = (data: unknown, id: string) => {
 	}
 
 	// TODO: let the user decide if he wants to download the file
-	// TODO: download the file in chunks so it wont lag the UI when receiving the file
+	// TODO: download the file in chunks so user can send message while to file is uploading
 	const fileData = parseSchema(FileDataSchema, data);
 	if (fileData) {
-		const reader = new FileReader();
-
-		reader.readAsDataURL(new Blob([new Uint8Array(fileData.file.arrayBuffer)]));
-		reader.addEventListener('load', () => {
-			const msg: FileMessage | undefined = parseSchema(FileMessageSchema, {
-				type: 'message',
-				messageType: 'file',
-				id: fileData.id,
-				file: {
-					name: fileData.file.name,
-					type: fileData.file.type,
-					size: fileData.file.size,
-					url: reader.result as string
-				}
-			} satisfies FileMessage);
-
-			if (msg) {
-				contacts.update((contacts) => {
-					contacts[id].messages.push(msg satisfies FileMessage);
-					return contacts;
-				});
+		const msg: FileMessage | undefined = parseSchema(FileMessageSchema, {
+			type: 'message',
+			messageType: 'file',
+			id: fileData.id,
+			file: {
+				name: fileData.file.name,
+				type: fileData.file.type,
+				size: fileData.file.size,
+				url: URL.createObjectURL(new Blob([fileData.file.arrayBuffer]))
 			}
-		});
+		} satisfies FileMessage);
+
+		if (msg) {
+			contacts.update((contacts) => {
+				contacts[id].messages.push(msg satisfies FileMessage);
+				return contacts;
+			});
+		}
 		return;
 	}
 };
